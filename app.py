@@ -7,21 +7,47 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_score, recall_score
 
-def main():
-    # Page configuration
-    st.set_page_config(page_title="Binary Classification", page_icon="", layout="wide")
+# Set the page configuration
+st.set_page_config(
+    page_title="Binary Classification Web App",
+    page_icon="🍄",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
+# Custom theme
+st.markdown("""
+    <style>
+    .main {
+        background-color: #f0f2f6;
+        color: #31333f;
+    }
+    .sidebar .sidebar-content {
+        background-color: #f8f9fa;
+    }
+    .stButton>button {
+        background-color: #4CAF50;
+        color: white;
+    }
+    .stButton>button:hover {
+        background-color: #45a049;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+# Main function
+def main():
     # Header
     st.title("Binary Classification Web App")
-    st.image("https://path/to/your/image.png", width=700)  # Add a relevant image or logo
+    st.image("https://images.pexels.com/photos/2569641/pexels-photo-2569641.jpeg", width=700)  # Add a relevant image or logo
 
     # Introduction
     st.markdown("""
-    Welcome to the Mushroom Classification Web App! 
+    Welcome to the Binary Classification Web App! 🍄
     
-    This application allows you to classify models using machine learning models like Support Vector Machine (SVM), Logistic Regression, and Random Forest Classification.
+    This application allows you to classify mushrooms as edible or poisonous using machine learning models like Support Vector Machine (SVM), Logistic Regression, and Random Forest Classification.
     
-    Use the sidebar to select the model and adjust the parameters to see how accurate the models are performing.
+    Use the sidebar to select the model and adjust the parameters to see how accurately the models perform.
     """)
 
     st.sidebar.title("Navigation")
