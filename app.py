@@ -7,11 +7,25 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import precision_score, recall_score
 
-
 def main():
-    st.title("Binary Classification Web App")
-    st.sidebar.title("Binary Classification Web App")
-    st.sidebar.markdown("See how accurate your models are performing ")
+    # Page configuration
+    st.set_page_config(page_title="Mushroom Classification", page_icon="🍄", layout="wide")
+
+    # Header
+    st.title("Mushroom Classification Web App")
+    st.image("https://path/to/your/image.png", width=700)  # Add a relevant image or logo
+
+    # Introduction
+    st.markdown("""
+    Welcome to the Mushroom Classification Web App! 🍄
+    
+    This application allows you to classify mushrooms as edible or poisonous using machine learning models like Support Vector Machine (SVM), Logistic Regression, and Random Forest Classification.
+    
+    Use the sidebar to select the model and adjust the parameters to see how accurate the models are performing.
+    """)
+
+    st.sidebar.title("Navigation")
+    st.sidebar.markdown("Use the options below to navigate through the application.")
 
     df = utils.load_data()
     x_train, x_test, y_train, y_test = utils.split(df)
@@ -40,11 +54,9 @@ def main():
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
             if st.button("Show Predictions", key="show_predictions_svm"):
-                st.write("Show Predictions button clicked")  # Debug statement
                 st.subheader("Predictions")
                 predictions = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
                 st.write(predictions)
-                st.write(predictions.head())  # Debug statement to print predictions
 
     elif classifier == 'Logistic Regression':
         st.sidebar.subheader("Model Hyperparameters")
@@ -65,11 +77,9 @@ def main():
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
             if st.button("Show Predictions", key="show_predictions_lr"):
-                st.write("Show Predictions button clicked")  # Debug statement
                 st.subheader("Predictions")
                 predictions = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
                 st.write(predictions)
-                st.write(predictions.head())  # Debug statement to print predictions
 
     elif classifier == 'Random Forest Classification':
         st.sidebar.subheader("Model Hyperparameters")
@@ -91,11 +101,9 @@ def main():
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
             if st.button("Show Predictions", key="show_predictions_rf"):
-                st.write("Show Predictions button clicked")  # Debug statement
                 st.subheader("Predictions")
                 predictions = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
                 st.write(predictions)
-                st.write(predictions.head())  # Debug statement to print predictions
 
     if st.sidebar.checkbox("Show raw data", False):
         st.subheader("Mushroom Data Set (Classification)")
