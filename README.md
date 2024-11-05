@@ -1,35 +1,62 @@
-# Mushroom Classification Web App
+<h1 align="center">Binary Classification Web App</h1>
 
-This repository contains a Streamlit web application for classifying mushrooms as edible or poisonous. The app uses machine learning models such as Support Vector Machine (SVM), Logistic Regression, and Random Forest to make predictions based on user input.
+This is a web app built to dynamically select a classifier from the given options along with their respective hyper-parameters and view the results in three formats.
 
-## Features
-- Load and preprocess mushroom dataset
-- Train and evaluate models: SVM, Logistic Regression, Random Forest
-- Display model performance metrics: Accuracy, Precision, Recall
-- Visualize confusion matrix, ROC curve, and Precision-Recall curve
-- User input form for making predictions on new data
+## Classifiers Used
+* Support Vector Classifier (SVC)
+* Logistic Regression
+* Random Forest Classifier
 
-## Installation
-1. Clone the repository:
+## Metrics Used
+* Confusion Matrix
+* ROC Curve
+* Precision-Recall Curve
+
+## Built With
+* **Streamlit** - The web framework used
+* **scikit-learn** - Machine learning library
+* **pandas** - Data manipulation and analysis
+* **numpy** - Numerical computing
+
+## Deployment
+The web app can be deployed on platforms like **Heroku** or **Streamlit Sharing**.
+
+## Getting Started
+
+### Prerequisites
+Make sure you have the following installed:
+* Python 3.6 or higher
+* pip (Python package installer)
+
+### Installation
+
+1. **Clone the repository:**
     ```bash
-    git clone https://github.com/arnavballincode/binary_classifier.git
+    git clone https://github.com/yourusername/binary-classification-web-app.git
+    cd binary-classification-web-app
     ```
-2. Navigate to the project directory:
+
+2. **Create a virtual environment:**
     ```bash
-    cd binary_classifier
+    python -m venv myenv
     ```
-3. Install the required packages:
+
+3. **Activate the virtual environment:**
+    - On Windows:
+        ```bash
+        myenv\Scripts\activate
+        ```
+    - On macOS and Linux:
+        ```bash
+        source myenv/bin/activate
+        ```
+
+4. **Install the required packages:**
     ```bash
     pip install -r requirements.txt
     ```
 
-## Usage
-1. Run the Streamlit app:
+5. **Run the app:**
     ```bash
     streamlit run app.py
     ```
-2. Open your web browser and go to `http://localhost:8501` to interact with the app.
-
-## Dataset
-The mushroom dataset used in this app is preprocessed and loaded from a CSV file. Ensure the `mushrooms.csv` file is in the project directory.
-
