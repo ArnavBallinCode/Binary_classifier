@@ -12,7 +12,7 @@ def main():
     st.set_page_config(page_title="Mushroom Classification", page_icon="🍄", layout="wide")
 
     # Header
-    st.title("Mushroom Classification Web App")
+    st.title("Binary Classification Web App")
     st.image("https://path/to/your/image.png", width=700)  # Add a relevant image or logo
 
     # Introduction
