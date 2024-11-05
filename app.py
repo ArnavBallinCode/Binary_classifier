@@ -9,7 +9,7 @@ from sklearn.metrics import precision_score, recall_score
 
 def main():
     # Page configuration
-    st.set_page_config(page_title="Mushroom Classification", page_icon="🍄", layout="wide")
+    st.set_page_config(page_title="Binary Classification", page_icon="", layout="wide")
 
     # Header
     st.title("Binary Classification Web App")
@@ -19,7 +19,7 @@ def main():
     st.markdown("""
     Welcome to the Mushroom Classification Web App! 
     
-    This application allows you to classify mushrooms as edible or poisonous using machine learning models like Support Vector Machine (SVM), Logistic Regression, and Random Forest Classification.
+    This application allows you to classify models using machine learning models like Support Vector Machine (SVM), Logistic Regression, and Random Forest Classification.
     
     Use the sidebar to select the model and adjust the parameters to see how accurate the models are performing.
     """)
