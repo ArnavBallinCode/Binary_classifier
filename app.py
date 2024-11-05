@@ -15,23 +15,83 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom theme
+# Custom CSS for radiant background, animated bubbles, and button hover effects
 st.markdown("""
     <style>
+    body {
+        background: linear-gradient(45deg, #ff6b6b, #ffe66d);
+        background-size: 400% 400%;
+        animation: Gradient 15s ease infinite;
+    }
+    
+    @keyframes Gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
     .main {
-        background-color: #f0f2f6;
-        color: #31333f;
+        background: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
     }
-    .sidebar .sidebar-content {
-        background-color: #f8f9fa;
-    }
+    
     .stButton>button {
         background-color: #4CAF50;
         color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        transition-duration: 0.4s;
+        cursor: pointer;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     }
+    
     .stButton>button:hover {
-        background-color: #45a049;
+        background-color: white;
+        color: black;
+        box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        transform: scale(1.1);
     }
+    
+    .stButton>button:active {
+        transform: scale(0.95);
+    }
+    
+    .main {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .main::before {
+        content: '';
+        position: absolute;
+        top: -100px;
+        left: -100px;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: bubble 20s linear infinite;
+    }
+    
+    @keyframes bubble {
+        0% {
+            transform: translate(0, 0);
+            opacity: 1;
+        }
+        100% {
+            transform: translate(calc(100vw - 100px), calc(100vh - 100px));
+            opacity: 0;
+        }
+    }
+    
     </style>
     """, unsafe_allow_html=True)
 
