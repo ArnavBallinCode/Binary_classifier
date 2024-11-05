@@ -17,7 +17,7 @@ def main():
 
     # Introduction
     st.markdown("""
-    Welcome to the Mushroom Classification Web App! 🍄
+    Welcome to the Mushroom Classification Web App! 
     
     This application allows you to classify mushrooms as edible or poisonous using machine learning models like Support Vector Machine (SVM), Logistic Regression, and Random Forest Classification.
     
