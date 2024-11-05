@@ -19,7 +19,7 @@ This is a web app built to dynamically select a classifier from the given option
 * **numpy** - Numerical computing
 
 ## Deployment
-The web app can be deployed on platforms like **Heroku** or **Streamlit Sharing**.
+(https://arnavballincode-binary-classifier-app-kt94ps.streamlit.app/)
 
 ## Getting Started
 
