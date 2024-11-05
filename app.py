@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import utils
-
+import pandas as pd
 from sklearn.svm import SVC
 from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
@@ -11,8 +11,7 @@ from sklearn.metrics import precision_score, recall_score
 def main():
     st.title("Binary Classification Web App")
     st.sidebar.title("Binary Classification Web App")
-    st.markdown("Are your mushrooms edible or poisonous? 🍄")
-    st.sidebar.markdown("Are your mushrooms edible or poisonous? 🍄")
+    st.sidebar.markdown("See how accurate your models are performing ")
 
     df = utils.load_data()
     x_train, x_test, y_train, y_test = utils.split(df)
@@ -29,7 +28,7 @@ def main():
 
         metrics = st.sidebar.multiselect("What metrics to plot?", ("Confusion Matrix", "ROC Curve", "Precision-Recall Curve"))
 
-        if st.sidebar.button("Classify", key="classify"):
+        if st.sidebar.button("Classify", key="classify_svm"):
             st.subheader("Support Vector Machine (SVM) Results")
             model = SVC(C=C, kernel=kernel, gamma=gamma)
             model.fit(x_train, y_train)
@@ -40,6 +39,13 @@ def main():
             st.write("Recall: ", recall_score(y_test, y_pred).round(2))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
+            if st.button("Show Predictions", key="show_predictions_svm"):
+                st.write("Show Predictions button clicked")  # Debug statement
+                st.subheader("Predictions")
+                predictions = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+                st.write(predictions)
+                st.write(predictions.head())  # Debug statement to print predictions
+
     elif classifier == 'Logistic Regression':
         st.sidebar.subheader("Model Hyperparameters")
         C = st.sidebar.number_input("C (Regularization parameter)", 0.01, 10.0, step=0.01, key='Lr')
@@ -47,7 +53,7 @@ def main():
 
         metrics = st.sidebar.multiselect("What metrics to plot?", ("Confusion Matrix", "ROC Curve", "Precision-Recall Curve"))
 
-        if st.sidebar.button("Classify", key="classify"):
+        if st.sidebar.button("Classify", key="classify_lr"):
             st.subheader("Logistic Regression Results")
             model = LogisticRegression(C=C, max_iter=max_iter)
             model.fit(x_train, y_train)
@@ -58,6 +64,13 @@ def main():
             st.write("Recall: ", recall_score(y_test, y_pred).round(2))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
+            if st.button("Show Predictions", key="show_predictions_lr"):
+                st.write("Show Predictions button clicked")  # Debug statement
+                st.subheader("Predictions")
+                predictions = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+                st.write(predictions)
+                st.write(predictions.head())  # Debug statement to print predictions
+
     elif classifier == 'Random Forest Classification':
         st.sidebar.subheader("Model Hyperparameters")
         n_estimators = st.sidebar.number_input("Number of trees in the forest", 100, 5000, step=10, key='n_estimators')
@@ -66,7 +79,7 @@ def main():
         
         metrics = st.sidebar.multiselect("What metrics to plot?", ("Confusion Matrix", "ROC Curve", "Precision-Recall Curve"))
 
-        if st.sidebar.button("Classify", key="classify"):
+        if st.sidebar.button("Classify", key="classify_rf"):
             st.subheader("Random Forest Results")
             model = RandomForestClassifier(n_estimators=n_estimators, max_depth=max_depth, bootstrap=bootstrap, n_jobs=-1)
             model.fit(x_train, y_train)
@@ -77,10 +90,16 @@ def main():
             st.write("Recall: ", recall_score(y_test, y_pred).round(2))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
+            if st.button("Show Predictions", key="show_predictions_rf"):
+                st.write("Show Predictions button clicked")  # Debug statement
+                st.subheader("Predictions")
+                predictions = pd.DataFrame({'Actual': y_test, 'Predicted': y_pred})
+                st.write(predictions)
+                st.write(predictions.head())  # Debug statement to print predictions
+
     if st.sidebar.checkbox("Show raw data", False):
         st.subheader("Mushroom Data Set (Classification)")
         st.write(df)
 
 if __name__ == '__main__':
     main()
-
