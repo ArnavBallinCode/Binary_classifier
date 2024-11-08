@@ -100,11 +100,6 @@ def main():
     # Header
     st.title("Binary Classification Web App")
     st.image("https://images.pexels.com/photos/2569641/pexels-photo-2569641.jpeg", width=700)  # Add a relevant image or logo
-
-    # LinkedIn button
-    linkedin_url = "https://www.linkedin.com/in/arnav-angarkar/"
-    if st.button("Connect on LinkedIn"):
-        st.write(f"[Visit my LinkedIn Profile]({linkedin_url})")
     
     
     # Introduction
@@ -200,6 +195,12 @@ def main():
     if st.sidebar.checkbox("Show raw data", False):
         st.subheader("Mushroom Data Set (Classification)")
         st.write(df)
+     # LinkedIn button at the bottom
+    linkedin_url = "https://www.linkedin.com/in/arnav-angarkar/"
+    if st.button("Connect on LinkedIn"):
+        st.write(f"[Visit my LinkedIn Profile]({linkedin_url})")
+
+
 
 if __name__ == '__main__':
     main()
