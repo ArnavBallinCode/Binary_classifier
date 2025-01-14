@@ -136,8 +136,8 @@ def main():
             accuracy = model.score(x_test, y_test)
             y_pred = model.predict(x_test)
             st.write("Accuracy: ", round(accuracy, 2))
-            st.write("Precision: ", precision_score(y_test, y_pred).round(2))
-            st.write("Recall: ", recall_score(y_test, y_pred).round(2))
+            st.write("Precision: ", round(precision_score(y_test, y_pred), 2))
+            st.write("Recall: ", round(recall_score(y_test, y_pred), 2))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
             if st.button("Show Predictions", key="show_predictions_svm"):
@@ -159,8 +159,8 @@ def main():
             accuracy = model.score(x_test, y_test)
             y_pred = model.predict(x_test)
             st.write("Accuracy: ", round(accuracy, 2))
-            st.write("Precision: ", precision_score(y_test, y_pred).round(2))
-            st.write("Recall: ", recall_score(y_test, y_pred).round(2))
+            st.write("Precision: ", round(precision_score(y_test, y_pred), 2))
+            st.write("Recall: ", round(recall_score(y_test, y_pred), 2))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
             if st.button("Show Predictions", key="show_predictions_lr"):
@@ -183,8 +183,8 @@ def main():
             accuracy = model.score(x_test, y_test)
             y_pred = model.predict(x_test)
             st.write("Accuracy: ", round(accuracy, 2))
-            st.write("Precision: ", precision_score(y_test, y_pred).round(2))
-            st.write("Recall: ", recall_score(y_test, y_pred).round(2))
+            st.write("Precision: ", round(precision_score(y_test, y_pred), 2))
+            st.write("Recall: ", round(recall_score(y_test, y_pred), 2))
             utils.plot_metrics(metrics, model, x_test, y_test, class_names)
 
             if st.button("Show Predictions", key="show_predictions_rf"):
