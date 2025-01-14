@@ -201,6 +201,6 @@ def main():
         st.write(f"[Visit my LinkedIn Profile]({linkedin_url})")
 
 
-
 if __name__ == '__main__':
     main()
+
